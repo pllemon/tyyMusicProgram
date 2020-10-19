@@ -1,0 +1,7 @@
+<view class="bg-white">
+    <view wx:for="{{[1,2,3]}}" class="pay-item">
+        <view class="text-lg text-black text-bold">付款时间：2020-10-12 20:20</view>
+        <view>付款项目：2020秋季全国钢琴大赛</view>
+        <view class="text-lg text-red money">￥300.00</view>
+    </view>
+</view>

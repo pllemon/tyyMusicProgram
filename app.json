@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/index/index",
+
+    "pages/signUp/index",
+    "pages/signUp2/index",
+    "pages/activityDetails/index",
+    "pages/payRecord/index",
+    "pages/resultSearch/index",
+
+    "pages/person/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "tab": "/components/tab/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-popup": "@vant/weapp/popup/index"
+  }
+}

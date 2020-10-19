@@ -1,0 +1,23 @@
+.van-cell-group{
+    margin-bottom: 20rpx;
+}
+
+.train-list{
+    line-height: 1.8;
+    font-size: 16px;
+    padding: 32rpx !important;
+    padding-left: 76rpx !important;
+}
+.train-list .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.train-list .time{
+    font-size: 14px;
+}
+
+.cell-title .cell-icon{
+    margin-right: 10rpx;
+}

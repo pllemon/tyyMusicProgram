@@ -1,0 +1,12 @@
+.pay-item{
+    padding: 30rpx;
+    border-top: 1px solid #eee;
+    line-height: 1.8;
+    position: relative;
+}
+
+.money{
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+}

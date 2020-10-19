@@ -1,0 +1,16 @@
+.van-cell-group{
+    margin-top: 30rpx !important;
+}
+
+.action{
+    display: flex;
+    align-items: center;
+    margin-top: 5rpx;
+}
+.action .cuIcon{
+    margin-right: 10rpx;
+}
+
+.cu-item{
+    margin: 0 !important;
+}

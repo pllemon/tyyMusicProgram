@@ -1,0 +1,87 @@
+page{
+    background: #fff;
+}
+
+.buy-btn{
+    width:240rpx;
+    text-align: center;
+    padding: 6rpx;
+    border-radius: 10rpx;
+}
+
+.buy-item{
+    padding: 20rpx 30rpx;
+    margin-bottom: 20rpx;
+}
+.buy-item .text{
+    margin-right: 20rpx;
+    font-size: 14px;
+    flex: 1;
+}
+.buy-item .original-price{
+    text-decoration: line-through;
+    font-size: 13px;
+}
+.buy-item .active-price{
+    font-size: 16px;
+    color: #353535;
+    font-weight: bold;
+}
+
+
+/*  */
+.messsage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .messsage .title{
+    font-size: 20px;
+    color: #000;
+    flex: 1;
+  }
+  
+  .messsage button{
+    width: 180rpx !important;
+  }
+  
+  .cu-card>.cu-item{
+    margin-top: 0 !important;
+  }
+  
+  
+  .item{
+    position: relative;
+    /* background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg'); */
+    background-color: #fff;
+    height: 340rpx;
+    overflow: hidden;
+  }
+  .item .cover{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .message{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20rpx;
+  }
+  
+  .item .cu-tag{
+    position: absolute;
+    right: 0;
+  }
+  
+  .item .cu-btn{
+    margin: 0;
+    font-size: 13px;
+    width:160rpx;
+  }
+
+  .details{
+      border-bottom: 1px solid #eee;
+  }

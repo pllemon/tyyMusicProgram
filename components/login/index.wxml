@@ -1,0 +1,8 @@
+<van-popup
+  show="{{ showAuth }}"
+  round
+  custom-style="height: 300rpx"
+  bind:close="onClose"
+>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+</van-popup>

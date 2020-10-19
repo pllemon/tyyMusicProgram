@@ -1,0 +1,8 @@
+<view class="cu-bar tabbar bg-white">
+  <view class="action {{active == 0 ? 'text-cyan' : 'text-gray'}}" bindtap="goStudy">
+    <view class="cuIcon-punch"></view> 我要学习
+  </view>
+  <view class="action {{active == 1 ? 'text-cyan' : 'text-gray'}}" bindtap="goPerson">
+    <view class="cuIcon-my"></view> 我的账户
+  </view>
+</view>
