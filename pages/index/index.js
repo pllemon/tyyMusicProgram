@@ -9,23 +9,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
-
-    list: [
-      {
-        id: 1,
-        name: '2020秋季全国钢琴大赛',
-        startTime: '2020.10.01',
-        endTime: '2020.10.08',
-        type: 1
-      },
-      {
-        id: 2,
-        name: '2020钢琴进修班',
-        startTime: '2020.10.01',
-        endTime: '2020.10.08',
-        type: 2
-      },
-    ]
+    list: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -33,6 +17,7 @@ Page({
       url: '../logs/logs'
     })
   },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -60,7 +45,24 @@ Page({
         }
       })
     }
+
+    this.getCourseList();
   },
+
+  getCourseList() {
+    let that = this
+    app.request({
+      url: '/indexlist',
+      method: 'get',
+      data: {},
+      success: function(data) {
+        that.setData({
+          list: data
+        })
+      }
+    })
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -76,5 +78,7 @@ Page({
     wx.navigateTo({
       url: '/pages/activityDetails/index?id='+ id + '&type=' + type
     })
-  }
+  },
+
+
 })

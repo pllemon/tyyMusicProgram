@@ -8,17 +8,37 @@ Page({
             endTime: '2020.10.08',
             type: 1
         },
+        type: '',
+        id: ''
     },
 
     onLoad(params) {
         this.setData({
-            'message.type': params.type
+            'id': params.id,
+            'type': params.type
+        })
+        this.getDetails()
+    },
+
+    getDetails() {
+        let that = this
+        let url = '/examinationinfo?examination_id=' + that.data.id
+        if (that.data.type == 2) {
+            url = '/traininfo?train_id=' + that.data.id
+        }
+        app.request({
+          url,
+          method: 'get',
+          data: {},
+          success: function(data) {
+            console.log(data)
+          }
         })
     },
 
     signUp() {
         wx.navigateTo({
-            url: '/pages/signUp/index'
+            url: '/pages/signUp/index?id=' + this.data.id
         })
     },
 
