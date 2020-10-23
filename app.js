@@ -18,6 +18,7 @@ App({
           },
           success: function(data) {
             that.globalData.loginInfo = data
+            that.globalData.session = data
             if (that.loginCallback) {
               that.loginCallback()
             }
@@ -120,6 +121,7 @@ App({
   
   globalData: {
     userInfo: null,
-    loginInfo: null
+    loginInfo: null,
+    session: ''
   }
 })

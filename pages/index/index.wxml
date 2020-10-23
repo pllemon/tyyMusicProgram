@@ -2,16 +2,16 @@
 <view class="page-content">
   <view class="main-content">
     <view wx:for="{{list}}" class="item bg-img">
-      <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" class="cover"/>
-      <view class='cu-tag bg-orange' wx:if="{{item.type ==1}}">比赛</view>
+      <image src="{{item.banner_url}}" class="cover"/>
+      <view class='cu-tag bg-orange' wx:if="{{item.indextype == 1}}">比赛</view>
       <view class='cu-tag bg-blue' wx:else>培训</view>
 			<view class="text-white bg-shadeBottom message">
 				<view class="text-xl text-bold">
-					{{item.name}}
+					{{item.title}}
 				</view>
 				<view class="text-df flex flex-wrap justify-between align-center">
-          <text>{{item.startTime}} ~ {{item.endTime}}</text>
-          <button class="cu-btn round sm" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="signUp">我要报名</button>
+          <text>{{item.activity_time}}</text>
+          <button class="cu-btn round sm" data-id="{{item.indextype == 1 ? item.examination_id : item.train_id}}" data-type="{{item.indextype}}" bindtap="signUp">我要报名</button>
         </view>
 			</view>
 		</view>
