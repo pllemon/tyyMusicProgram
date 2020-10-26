@@ -20,34 +20,13 @@
         </view>
 
         <van-cell-group>
-            <van-field size="large" required label="报名人" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="联系方式" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="出生年月日" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="身份证号码" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="指导老师" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-        </van-cell-group>
-
-        <van-cell-group>
-            <van-field size="large" required label="监护人" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="联系方式" data-key="name" value="{{ form.name }}" placeholder="请输入" bind:change="onChange" />
-        </van-cell-group>
-
-        <van-cell-group>
-            <view wx:for="{{form.music}}">
+            <view wx:for="{{form.signupInfo}}">
                 <van-cell>
-                    <text slot="title" class="text-black text-bold text-lg">参赛曲目{{index+1}}</text>
-                    <view slot="right-icon">
-                        <view class="text-green action" wx:if="{{index == 0}}" data-idx="{{index}}" bindtap="addMusic">
-                            <text class="cuIcon cuIcon-roundadd" /> <text>添加</text>
-                        </view>
-                        <view class="text-red action" wx:else data-idx="{{index}}" bindtap="delMusic" >
-                            <text class="cuIcon cuIcon-roundclose" /> <text>删除</text>
-                        </view>
-                    </view>
+                    <text slot="title" class="text-black text-bold text-lg">报名人{{index+1}}</text>
                 </van-cell>
-                <van-field size="large" required label="名称" data-key="form.music[{{index}}].name" value="{{ item.name }}" placeholder="请输入" bind:change="onChange" />
-                <van-field size="large" required label="作者" data-key="form.music[{{index}}].person" value="{{ item.person }}" placeholder="请输入" bind:change="onChange" />
-                <van-field size="large" required label="出处" data-key="form.music[{{index}}].region" value="{{ item.region }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" required label="报名人" data-key="form.signupInfo[{{index}}].signup_name" value="{{ item.signup_name }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" required label="联系方式" type="number" data-key="form.signupInfo[{{index}}].phone" value="{{ item.phone }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" required label="身份证号码" type="idcard" data-key="form.signupInfo[{{index}}].peopleid" value="{{ item.peopleid }}" placeholder="请输入" bind:change="onChange" />
             </view>
         </van-cell-group>
     </scroll-view>

@@ -2,42 +2,28 @@ const app = getApp();
 Page({
     data: {
         form: {
-            music: [{
-                name: '',
-                person: '',
-                region: ''
-            }]
+            rule: [],
+            train_id: '',
+            signupInfo: []
         },
         scrollTop: 0
     },
 
-    addMusic() {
-        let music = this.data.form.music
-        if (music.length >= 5) {
-            app.showToast('最多可以有5个曲目')
-            return false
-        }
-        music.push({
-            name: '',
-            person: '',
-            region: ''
-        })
-        this.setData({
-            'form.music': music
-        })
-        setTimeout(() => {
-            this.setData({
-                scrollTop: 100000
+    onLoad() {
+        let signUpInfo = app.globalData.signUpInfo
+        let personNumber = signUpInfo.personNumber || 1
+        let form = this.data.form
+        form.rule = signUpInfo.rule
+        form.train_id = signUpInfo.train_id
+        for (let i = 0; i < personNumber; i++) {
+            form.signupInfo.push({
+                signup_name: '',
+                phone: '',
+                peopleid: ''
             })
-        }, 500)
-    },
-
-    delMusic(e) {
-        let music = this.data.form.music
-        let idx = e.currentTarget.dataset.idx
-        music.splice(idx, 1)
+        }
         this.setData({
-            'form.music': music
+            form
         })
     },
 
@@ -47,5 +33,9 @@ Page({
         this.setData({
             [key]: detail
         })
+    },
+
+    signUp() {
+        console.log(this.data.form)
     }
 })

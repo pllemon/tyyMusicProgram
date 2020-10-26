@@ -1,15 +1,18 @@
 const app = getApp();
+let signUpInfo = {};
 Page({
     data: {
-        message: {
-            id: 1,
-            name: '2020秋季全国钢琴大赛',
-            startTime: '2020.10.01',
-            endTime: '2020.10.08',
-            type: 1
-        },
+        message: {},
         type: '',
-        id: ''
+        id: '',
+        ruleOptions: {
+            '>': '大于',
+            '>=': '大于等于',
+            '=': '等于',
+            '<': '小于',
+            '<=': '小于等于'
+        },
+        discountMoney: 0
     },
 
     onLoad(params) {
@@ -18,6 +21,25 @@ Page({
             'type': params.type
         })
         this.getDetails()
+    },
+
+    checkboxChange(e) {
+        let value = e.detail.value
+        signUpInfo.rule = value
+        let discountMoney = 0
+        let rule = this.data.message.rule
+        rule.forEach(item => {
+            let id = item.id.toString()
+            if (value.indexOf(id) != -1) {
+                discountMoney += parseFloat(item.discount_money)
+                if (item.rule_type == 'number') {
+                    signUpInfo.personNumber = item.rule.value
+                }
+            }
+        })
+        this.setData({
+            discountMoney
+        })
     },
 
     getDetails() {
@@ -31,7 +53,9 @@ Page({
           method: 'get',
           data: {},
           success: function(data) {
-            console.log(data)
+            that.setData({
+                message: data
+            })
           }
         })
     },
@@ -42,10 +66,11 @@ Page({
         })
     },
 
-    signUp2(e) {
-        let type = e.currentTarget.details.type
+    signUp2() {
+        signUpInfo.train_id = this.data.id
+        app.globalData.signUpInfo = signUpInfo
         wx.navigateTo({
-            url: '/pages/signUp2/index?type=' + type
+            url: '/pages/signUp2/index'
         })
     }
 })

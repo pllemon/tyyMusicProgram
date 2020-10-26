@@ -2,7 +2,7 @@
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
         <view class="item bg-img">
             <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" class="cover"/>
-            <view class='cu-tag bg-orange' wx:if="{{message.type ==1}}">比赛</view>
+            <view class='cu-tag bg-orange' wx:if="{{type ==1}}">比赛</view>
             <view class='cu-tag bg-blue' wx:else>培训</view>
             <view class="text-white bg-shadeBottom message">
                 <view class="text-xl text-bold">
@@ -15,31 +15,34 @@
 			</view>
 		</view>
         <view class="details padding">富文本信息</view>
-        <view wx:if="{{message.type ==2}}">
-            <view class="buy-item bg-mauve light flex align-center justify-between">
-                <view class="text">两人团购：记得付费成功后进行名单填写</view>
-                <view class="buy-btn bg-white" data-type="1" bindtap="signUp2">
-                    <view class="active-price">￥999</view>
-                    <view class="original-price">原价 ￥19999</view>
+        <checkbox-group bindchange="checkboxChange"  wx:if="{{type ==2}}">
+            <block wx:for="{{message.rule}}">
+                <view wx:if="{{item.rule_type == 'number'}}" class="buy-item bg-gray light flex align-center justify-between">
+                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
+                    <view class="text">{{item.rule.value}}人团购：记得付费成功后进行名单填写</view>
+                    <view class="buy-btn bg-white">
+                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                    </view>
                 </view>
-            </view>
-            <view class="buy-item bg-cyan light flex align-center justify-between">
-                <view class="text">早鸟价：2020.11.01前支付</view>
-                <view class="buy-btn bg-white" data-type="2" bindtap="signUp2">
-                    <view class="active-price">￥999</view>
-                    <view class="original-price">原价 ￥19999</view>
+                <view wx:if="{{item.rule_type == 'time'}}" class="buy-item bg-gray light flex align-center justify-between">
+                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
+                    <view class="text">早鸟价：{{item.rule.value}}前支付</view>
+                    <view class="buy-btn bg-white">
+                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                    </view>
                 </view>
-            </view>
-            <view class="buy-item bg-orange light flex align-center justify-between">
-                <view class="text">特殊优惠：35岁以上劲享1000元减免优惠</view>
-                <view class="buy-btn bg-white" data-type="3" bindtap="signUp2">
-                    <view class="active-price">￥999</view>
-                    <view class="original-price">原价 ￥19999</view>
+                <view wx:if="{{item.rule_type == 'age'}}" class="buy-item bg-gray light flex align-center justify-between">
+                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
+                    <view class="text">特殊优惠：{{ruleOptions[item.rule.calculation]}}岁{{item.rule.value}}劲享{{item.discount_money}}元减免优惠</view>
+                    <view class="buy-btn bg-white">
+                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                    </view>
                 </view>
-            </view>
-        </view>
+            </block>
+        </checkbox-group>
     </scroll-view>
-    <view class="padding flex flex-direction" wx:if="{{message.type == 1}}">
-        <button class="submit-btn cu-btn bg-cyan lg" bindtap="signUp">立即报名（填写资料）</button>
+    <view class="padding flex flex-direction" >
+        <button class="submit-btn cu-btn bg-cyan lg" wx:if="{{type == 1}}" bindtap="signUp">立即报名（填写资料）</button>
+        <button class="submit-btn cu-btn bg-cyan lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{message.info.money - discountMoney}}（原价 ￥{{message.info.money}}）</button>
     </view>
 </view>

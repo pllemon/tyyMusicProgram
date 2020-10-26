@@ -122,6 +122,7 @@ App({
   globalData: {
     userInfo: null,
     loginInfo: null,
-    session: ''
+    session: '',
+    signUpInfo: null
   }
 })

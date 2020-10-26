@@ -23,9 +23,8 @@ page{
     font-size: 13px;
 }
 .buy-item .active-price{
-    font-size: 16px;
+    font-size: 14px;
     color: #353535;
-    font-weight: bold;
 }
 
 
@@ -84,4 +83,8 @@ page{
 
   .details{
       border-bottom: 1px solid #eee;
+  }
+
+  checkbox{
+    margin-right: 20rpx;
   }
