@@ -103,6 +103,12 @@
           "pathName": "pages/payRecord/index",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "成绩",
+          "pathName": "pages/resultSearch/index",
+          "scene": null
         }
       ]
     }

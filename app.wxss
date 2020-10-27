@@ -54,3 +54,15 @@ page{
   left: 14rpx;
   font-size: 26rpx;
 }
+
+.nores-tips{
+  color: #a5a5a5;
+  font-size: 28rpx;
+  line-height: 1.8;
+  text-align: center;
+  padding: 120rpx;
+}
+.nores-tips image{
+  width: 216rpx;
+  height: 202rpx;
+}

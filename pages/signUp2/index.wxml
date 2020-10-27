@@ -1,23 +1,10 @@
 <view class="page-content">
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
-        <view class="cu-card article" :class="isCard?'no-card':''">
-            <view class="cu-item shadow">
-                <view class="title"><view class="text-cut text-xl">24届秋叶钢琴杯总决赛</view></view>
-                <view class="content">
-                    <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
-                        mode="aspectFill"></image>
-                    <view class="desc">
-                        <view class="text-content">
-                            <view>开始时间：2012-12-12 12:12</view>
-                            <view>结束时间：2012-12-12 12:12</view>
-                        </view>
-                        <view>
-                            <view class="cu-tag bg-mauve light round">选拔赛</view>
-                        </view>
-                    </view>
-                </view>
-            </view>
+        <view class="message">
+            <view>项目：{{message.info.title}}</view>
+            <view>时间：{{message.info.activity_time}}</view>
         </view>
+
 
         <van-cell-group>
             <view wx:for="{{form.signupInfo}}">

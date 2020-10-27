@@ -6,7 +6,8 @@ Page({
             train_id: '',
             signupInfo: []
         },
-        scrollTop: 0
+        scrollTop: 0,
+        message: {}
     },
 
     onLoad() {
@@ -24,6 +25,21 @@ Page({
         }
         this.setData({
             form
+        })
+        this.getDetails()
+    },
+
+    getDetails() {
+        let that = this
+        app.request({
+          url: '/traininfo?train_id=' + that.data.form.train_id,
+          method: 'get',
+          data: {},
+          success: function(data) {
+            that.setData({
+                message: data
+            })
+          }
         })
     },
 

@@ -2,6 +2,9 @@
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
         <view class="item bg-img">
             <image src="{{message.info.banner_url}}" class="cover"/>
+            <button class="share-btn" open-type="share" wx:if="{{type == 1}}">
+                <image src="../../image/share.png" class="share"/>
+            </button>
             <view class="text-white bg-shadeBottom message flex flex-wrap justify-between align-center">
                 <view class="title">
                     {{message.info.title}}

@@ -34,6 +34,13 @@ Page({
         })
     },
 
+    onShareAppMessage: function (res) {
+        return {
+            title: this.data.message.info.title,
+            path: '/pages/activityDetails/index?id=' + this.data.message.info.id
+        }
+    },
+
     chooseItem(e) {
         let dataset = e.currentTarget.dataset
         let rule = this.data.message.rule
@@ -97,7 +104,7 @@ Page({
         signUpInfo.train_id = this.data.id
         app.globalData.signUpInfo = signUpInfo
         wx.navigateTo({
-            url: '/pages/signUp2/index'
+            url: '/pages/signUp2/index?id=' + this.data.id
         })
     }
 })

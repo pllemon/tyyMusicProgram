@@ -1,5 +1,5 @@
 .van-cell-group{
-    margin-top: 30rpx !important;
+    margin-top: 20rpx !important;
 }
 
 .action{
@@ -13,4 +13,13 @@
 
 .cu-item{
     margin: 0 !important;
+}
+
+.message{
+    font-size: 36rpx;
+    color: #1E1E1E;
+    font-weight: bold;
+    line-height: 1.8;
+    padding: 20rpx;
+    background: #fff;
 }

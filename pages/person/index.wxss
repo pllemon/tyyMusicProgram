@@ -25,11 +25,14 @@
 .submit-btn{
     background: #fff !important;
     color: #000 !important;
+    font-weight: normal;
+    border: 1px solid #ddd;
+    height: 94rpx !important;
 }
 
 .cu-avatar{
-    width: 124rpx;
-    height: 124rpx;
+    width: 124rpx !important;
+    height: 124rpx !important;
 }
 
 .cell-title{

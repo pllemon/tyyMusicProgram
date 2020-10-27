@@ -10,7 +10,8 @@ Page({
             }]
         },
         scrollTop: 0,
-        groupList: []
+        groupList: [],
+        message: {}
     },
 
     onLoad(params) {
@@ -28,7 +29,9 @@ Page({
           method: 'get',
           data: {},
           success: function(data) {
-            console.log(data)
+            that.setData({
+                message: data
+            })
           }
         })
     },

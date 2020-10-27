@@ -117,3 +117,19 @@ page{
     width: 40rpx;
     height: 40rpx;
   }
+
+  .share-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 200rpx !important;
+    height: 60rpx !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+  .share-btn image{
+    width: 100%;
+    height: 100%;
+  }

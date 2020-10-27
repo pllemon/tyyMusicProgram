@@ -63,7 +63,7 @@ App({
       })
     }
     wx.request({
-      url: 'http://120.25.25.90:8081' + obj.url,
+      url: 'http://www.dsfjjwx.com:8081' + obj.url,
       method: obj.method || 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -85,7 +85,7 @@ App({
                   if (res.confirm) {
                     wx.removeStorageSync('session');
                     wx.reLaunch({
-                      url: '/pages/login/login?type=1'
+                      url: '/pages/index/index'
                     })
                   }
                 }
