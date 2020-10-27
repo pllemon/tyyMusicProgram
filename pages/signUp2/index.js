@@ -53,7 +53,6 @@ Page({
 
     signUp() {
         let that = this
-        console.log(that.data.form)
         app.request({
             url: '/trainsingup',
             data: that.data.form,

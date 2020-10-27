@@ -3,6 +3,8 @@
     border-top: 1px solid #eee;
     line-height: 1.8;
     position: relative;
+    color: #1E1E1E;
+    font-size: 28rpx;
 }
 
 .money{

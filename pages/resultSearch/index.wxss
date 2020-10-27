@@ -15,7 +15,7 @@
     font-size: 16px;
 }
 
-.match-item{
+.match-item, .match-item2{
     padding: 30rpx;
     border-top: 1px solid #eee;
     line-height: 1.8;
@@ -28,6 +28,20 @@
 .match-item .name{
     color: #1E1E1E;
     flex: 1;
+}
+
+.match-item2{
+    display: block;
+}
+.match-item2 .row{
+    display: flex;
+}
+.match-item2 .row view:first-child{
+    color: #1E1E1E;
+}
+.match-item2 .row view:last-child{
+    flex: 1;
+    text-align: right;
 }
 
 .submit-btn{

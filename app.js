@@ -66,7 +66,7 @@ App({
       url: 'http://www.dsfjjwx.com:8081' + obj.url,
       method: obj.method || 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+        'content-type': 'application/json',
         'cookie': that.globalData.session
       },
       data: obj.data || {},
