@@ -5,8 +5,8 @@
 .train-list{
     line-height: 1.8;
     font-size: 16px;
-    padding: 32rpx !important;
-    padding-left: 76rpx !important;
+    padding: 30rpx !important;
+    padding-left: 50rpx !important;
 }
 .train-list .item{
     display: flex;
@@ -20,4 +20,20 @@
 
 .cell-title .cell-icon{
     margin-right: 10rpx;
+}
+
+.submit-btn{
+    background: #fff !important;
+    color: #000 !important;
+}
+
+.cu-avatar{
+    width: 124rpx;
+    height: 124rpx;
+}
+
+.cell-title{
+    color: #1E1E1E;
+    font-size: 32rpx !important;
+    font-weight: bold;
 }

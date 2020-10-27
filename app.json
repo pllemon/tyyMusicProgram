@@ -19,6 +19,8 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "common-picker": "/components/commonPicker/commonPicker",
+    
     "tab": "/components/tab/index",
     "van-field": "@vant/weapp/field/index",
     "van-cell": "@vant/weapp/cell/index",

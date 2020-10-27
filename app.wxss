@@ -27,4 +27,30 @@ page{
 .submit-btn{
   width: 100% !important;
   margin: 0 !important;
+  background: #3A7FE2 !important;
+  color: #fff !important;
+}
+
+.picker-cell{
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  font-size: 32rpx;
+  position: relative;
+}
+.picker-cell .title{
+  width: 220rpx;
+}
+.picker-cell common-picker{
+  text-align: left;
+  flex: 1;
+}
+.picker-cell.require:after{
+  content: '*';
+  color: red;
+  position: absolute;
+  top: 36rpx;
+  left: 14rpx;
+  font-size: 26rpx;
 }

@@ -1,6 +1,6 @@
 <view class="padding flex flex-direction bg-white margin-bottom-sm">
     <input type="idcard" placeholder="请输入身份证" class="input"/>
-    <button class="submit-btn cu-btn bg-cyan lg" bindtap="signUp">查 找</button>
+    <button class="submit-btn cu-btn lg" bindtap="signUp">查 找</button>
 </view>
 
 <view class="cu-bar bg-white">

@@ -1,109 +1,110 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"useMultiFrameRuntime": false,
-		"useApiHook": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.13.1",
-	"appid": "wx0a0c40d66a267545",
-	"projectname": "music",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "报名",
-					"pathName": "pages/signUp/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "详情",
-					"pathName": "pages/activityDetails/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人",
-					"pathName": "pages/person/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "查询",
-					"pathName": "pages/resultSearch/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "付款记录",
-					"pathName": "pages/payRecord/index",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.1",
+  "appid": "wx0a0c40d66a267545",
+  "projectname": "music",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": 0,
+          "name": "报名",
+          "pathName": "pages/signUp/index",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "详情",
+          "pathName": "pages/activityDetails/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "个人",
+          "pathName": "pages/person/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "查询",
+          "pathName": "pages/resultSearch/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "付款记录",
+          "pathName": "pages/payRecord/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

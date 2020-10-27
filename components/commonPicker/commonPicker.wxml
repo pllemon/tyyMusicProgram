@@ -1,0 +1,15 @@
+<picker
+  value="{{active}}" 
+  range="{{range}}" 
+  range-key="{{rangeKey}}"
+  bindchange="bindChange"
+>
+  <view class="time-picker">
+    <text class="plac" wx:if="{{!label}}">请选择</text>
+    <text wx:if="{{label}}">{{label}}</text>
+    <text class="cuIcon-right"></text>
+    <!-- <view class="clear" wx:if="{{label}}" catchtap="clear">
+      <image src="/assets/images/icons/clear.png"/>
+    </view> -->
+  </view>
+</picker>

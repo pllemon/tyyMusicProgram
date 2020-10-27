@@ -1,8 +1,12 @@
 <view class="cu-bar tabbar bg-white">
-  <view class="action {{active == 0 ? 'text-cyan' : 'text-gray'}}" bindtap="goStudy">
-    <view class="cuIcon-punch"></view> 我要学习
+  <view class="action study  {{active == 0 ? 'active' : ''}}" bindtap="goStudy">
+    <image src="../../image/study1.png" wx:if="{{active == 1}}" />
+    <image src="../../image/study2.png" wx:if="{{active == 0}}" />
+    <view>我要学习</view>
   </view>
-  <view class="action {{active == 1 ? 'text-cyan' : 'text-gray'}}" bindtap="goPerson">
-    <view class="cuIcon-my"></view> 我的账户
+  <view class="action  person {{active == 1 ? 'active' : ''}}" bindtap="goPerson">
+    <image src="../../image/person1.png" wx:if="{{active == 0}}" />
+    <image src="../../image/person2.png"  wx:if="{{active == 1}}" />
+    <view>我的账户</view>
   </view>
 </view>

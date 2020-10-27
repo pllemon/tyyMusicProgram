@@ -1,48 +1,60 @@
-<view class="page-content">
+<view class="page-content" wx:if="{{finish}}">
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
         <view class="item bg-img">
-            <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" class="cover"/>
-            <view class='cu-tag bg-orange' wx:if="{{type ==1}}">比赛</view>
-            <view class='cu-tag bg-blue' wx:else>培训</view>
-            <view class="text-white bg-shadeBottom message">
-                <view class="text-xl text-bold">
-                    {{message.name}}
+            <image src="{{message.info.banner_url}}" class="cover"/>
+            <view class="text-white bg-shadeBottom message flex flex-wrap justify-between align-center">
+                <view class="title">
+                    {{message.info.title}}
                 </view>
-                <view class="text-df flex flex-wrap justify-between align-center">
-                    <text>{{message.startTime}} ~ {{message.endTime}}</text>
-                    <button class="cu-btn round sm" data-id="{{message.id}}" data-type="{{message.type}}" bindtap="signUp">我要报名</button>
+                <view class="time">
+                    <text>{{message.info.activity_time}}</text>
                 </view>
 			</view>
 		</view>
         <view class="details padding">富文本信息</view>
-        <checkbox-group bindchange="checkboxChange"  wx:if="{{type ==2}}">
+        <view wx:if="{{type ==2}}">
             <block wx:for="{{message.rule}}">
-                <view wx:if="{{item.rule_type == 'number'}}" class="buy-item bg-gray light flex align-center justify-between">
-                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
-                    <view class="text">{{item.rule.value}}人团购：记得付费成功后进行名单填写</view>
-                    <view class="buy-btn bg-white">
-                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                <view wx:if="{{item.rule_type == 'number'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                    <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
+                    <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
+                    <view class="mes">
+                        <view class="title">{{item.rule.value}}人团购：</view>
+                        <view>记得付费成功后进行名单填写</view>
+                    </view>
+                    <view class="buy-btn">
+                        <view class="active-price"><text>￥</text>{{item.discount_money}}</view>
+                        <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'time'}}" class="buy-item bg-gray light flex align-center justify-between">
-                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
-                    <view class="text">早鸟价：{{item.rule.value}}前支付</view>
-                    <view class="buy-btn bg-white">
-                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                <view wx:if="{{item.rule_type == 'time'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                    <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
+                    <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
+                    <view class="mes">
+                        <view class="title">早鸟价：</view>
+                        <view>{{item.rule.value}}前支付</view>
+                    </view>
+                    <view class="buy-btn">
+                        <view class="active-price"><text>￥</text>{{item.discount_money}}</view>
+                        <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'age'}}" class="buy-item bg-gray light flex align-center justify-between">
-                    <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
-                    <view class="text">特殊优惠：{{ruleOptions[item.rule.calculation]}}岁{{item.rule.value}}劲享{{item.discount_money}}元减免优惠</view>
-                    <view class="buy-btn bg-white">
-                        <view class="active-price">优惠￥{{item.discount_money}}</view>
+                <view wx:if="{{item.rule_type == 'age'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                    <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
+                    <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
+                    <view class="mes">
+                        <view class="title">特殊优惠：</view>
+                        <view>{{ruleOptions[item.rule.calculation]}}岁{{item.rule.value}}劲享{{item.discount_money}}元减免优惠</view>
+                    </view>
+                    <view class="buy-btn">
+                        <view class="active-price"><text>￥</text>{{item.discount_money}}</view>
+                        <view>优惠</view>
                     </view>
                 </view>
             </block>
-        </checkbox-group>
+        </view>
     </scroll-view>
     <view class="padding flex flex-direction" >
-        <button class="submit-btn cu-btn bg-cyan lg" wx:if="{{type == 1}}" bindtap="signUp">立即报名（填写资料）</button>
-        <button class="submit-btn cu-btn bg-cyan lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{message.info.money - discountMoney}}（原价 ￥{{message.info.money}}）</button>
+        <button class="submit-btn cu-btn lg" wx:if="{{type == 1}}" bindtap="signUp">立即报名（填写资料）</button>
+        <button class="submit-btn cu-btn lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{message.info.money - discountMoney}}（原价 ￥{{message.info.money}}）</button>
     </view>
 </view>

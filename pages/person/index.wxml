@@ -1,17 +1,17 @@
 <view class="page-content">
     <view class="main-content">
         <view class="bg-white padding flex align-center" style="margin-bottom: 20rpx">
-            <view class="cu-avatar round margin-right lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
+            <view class="cu-avatar margin-right lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
             <view>
-                <view class="text-lg text-bold text-black">小花花</view>
-                <view>联系方式：13650964250</view>
+                <view class="text-lg text-bold text-black padding-bottom-xs">小花花</view>
+                <view class=" text-black">联系方式：13650964250</view>
             </view>
         </view>
 
         <van-cell-group>
             <van-cell size="large" is-link url="/pages/resultSearch/index">
                 <view slot="title" class="cell-title">
-                    <text class="cell-icon cuIcon-selection"></text>
+                    <!-- <text class="cell-icon cuIcon-selection"></text> -->
                     <text>成绩查询 / 比赛查询</text>
                 </view>
             </van-cell>
@@ -19,7 +19,7 @@
         <van-cell-group>
             <van-cell size="large">
                 <view slot="title" class="cell-title">
-                    <text class="cell-icon cuIcon-list"></text>
+                    <!-- <text class="cell-icon cuIcon-list"></text> -->
                     <text>我的培训</text>
                 </view>
             </van-cell>
@@ -34,7 +34,7 @@
         <van-cell-group>
             <van-cell size="large" is-link url="/pages/payRecord/index">
                 <view slot="title" class="cell-title">
-                    <text class="cell-icon cuIcon-pay"></text>
+                    <!-- <text class="cell-icon cuIcon-pay"></text> -->
                     <text>付款记录</text>
                 </view>
             </van-cell>

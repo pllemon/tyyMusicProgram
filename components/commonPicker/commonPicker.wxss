@@ -1,0 +1,37 @@
+
+@import "../../colorui/icon.wxss";
+
+.time-picker{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.time-picker .plac{
+  color: #bcbcbc;
+}
+.cuIcon-right{
+  color: #bcbcbc;
+  position: relative;
+  top: 2rpx;
+}
+.arrow-right{
+  width: 20rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+  position: relative;
+  top: 2rpx;
+}
+.clear{
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.clear image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 2rpx;
+}

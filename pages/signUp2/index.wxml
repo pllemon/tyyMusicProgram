@@ -32,6 +32,6 @@
     </scroll-view>
     
     <view class="padding flex flex-direction">
-        <button class="submit-btn cu-btn bg-cyan lg" bindtap="signUp">立即付费</button>
+        <button class="submit-btn cu-btn lg" bindtap="signUp">立即付费</button>
     </view>
 </view>

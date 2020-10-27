@@ -9,7 +9,8 @@ Page({
                 song_authod: ''
             }]
         },
-        scrollTop: 0
+        scrollTop: 0,
+        groupList: []
     },
 
     onLoad(params) {
@@ -40,6 +41,9 @@ Page({
           data: {},
           success: function(data) {
             console.log(data)
+            that.setData({
+                groupList: data
+            })
           }
         })
     },
@@ -82,7 +86,26 @@ Page({
         })
     },
 
-    submit() {
-        console.log(this.data.form)
+    changePicker(e) {
+        let key = e.currentTarget.dataset.key
+        let detail = e.detail.value
+        this.setData({
+            [key]: detail
+        })
+    },
+
+    signUp() {
+        let that = this
+        app.request({
+            url: '/examinationsingup',
+            data: that.data.form,
+            success: function(data) {
+                app.successToast('报名成功', function() {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                })
+            }
+        })
     }
 })

@@ -1,4 +1,8 @@
 //app.js
+let systemDict = {
+  'SEX': [{label: '男', id: 1}, {label: '女', id: 2}]
+}
+
 App({
   onLaunch: function () {
     let that = this
@@ -118,11 +122,27 @@ App({
       title: title
     })
   },
+
+  successToast(text, callback) {
+    wx.showToast({
+      title: text,
+      icon: 'success',
+      duration: 1000,
+      mask: true
+    })
+    if (callback) {
+      setTimeout(function () {
+        callback()
+      }, 1000)
+    }
+  },
+
   
   globalData: {
     userInfo: null,
     loginInfo: null,
     session: '',
-    signUpInfo: null
+    signUpInfo: null,
+    systemDict
   }
 })

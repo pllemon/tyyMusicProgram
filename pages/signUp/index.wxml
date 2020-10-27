@@ -1,6 +1,6 @@
 <view class="page-content">
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
-        <view class="cu-card article" :class="isCard?'no-card':''">
+        <!-- <view class="cu-card article" :class="isCard?'no-card':''">
             <view class="cu-item shadow">
                 <view class="title"><view class="text-cut text-xl">24届秋叶钢琴杯总决赛</view></view>
                 <view class="content">
@@ -17,21 +17,27 @@
                     </view>
                 </view>
             </view>
-        </view>
+        </view> -->
 
         <van-cell-group>
             <van-field size="large" required label="报名人" data-key="form.signup_name" value="{{ form.signup_name }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="性别" data-key="form.user_sex" value="{{ form.user_sex }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="联系方式" data-key="form.phone" value="{{ form.phone }}" placeholder="请输入" bind:change="onChange" />
+            <view class="picker-cell require">
+                <text class="title">性别</text>
+                <common-picker isNumber="{{true}}" dict="SEX" value="{{form.sex}}" data-key="form.user_sex" bind:change="changePicker" />
+            </view>
+            <van-field size="large" required label="联系方式" type="number" data-key="form.phone" value="{{ form.phone }}" placeholder="请输入" bind:change="onChange" />
             <van-field size="large" required label="出生年月日" data-key="form.birthday" value="{{ form.birthday }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="身份证号码" data-key="form.peopleid" value="{{ form.peopleid }}" placeholder="请输入" bind:change="onChange" />
+            <van-field size="large" required label="身份证号码" type="idcard" data-key="form.peopleid" value="{{ form.peopleid }}" placeholder="请输入" bind:change="onChange" />
             <van-field size="large" required label="监护人" data-key="form.guardian" value="{{ form.guardian }}" placeholder="请输入" bind:change="onChange" />
         </van-cell-group>
 
         <van-cell-group>
             <van-field size="large" required label="指导老师" data-key="form.instructor" value="{{ form.instructor }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="联系方式" data-key="form.instructor_phone" value="{{ form.instructor_phone }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="报名组别" data-key="form.group_id" value="{{ form.group_id }}" placeholder="请输入" bind:change="onChange" />
+            <van-field size="large" required label="联系方式" type="number" data-key="form.instructor_phone" value="{{ form.instructor_phone }}" placeholder="请输入" bind:change="onChange" />
+            <view class="picker-cell require">
+                <text class="title">报名组别</text>
+                <common-picker arr="{{groupList}}" value="{{form.group_id}}" key="group_name" data-key="form.group_id" bind:change="changePicker" />
+            </view>
         </van-cell-group>
 
         <van-cell-group>
@@ -55,6 +61,6 @@
     </scroll-view>
     
     <view class="padding flex flex-direction">
-        <button class="submit-btn cu-btn bg-cyan lg" bindtap="submit">立即付费</button>
+        <button class="submit-btn cu-btn lg" bindtap="signUp">立即付费</button>
     </view>
 </view>

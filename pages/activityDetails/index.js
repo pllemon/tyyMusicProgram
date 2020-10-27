@@ -12,7 +12,8 @@ Page({
             '<': '小于',
             '<=': '小于等于'
         },
-        discountMoney: 0
+        discountMoney: 0,
+        finish: false
     },
 
     onLoad(params) {
@@ -21,23 +22,37 @@ Page({
             'type': params.type
         })
         this.getDetails()
+
+        let title = ''
+        if (params.type == 1) {
+            title = '比赛详情'
+        } else {
+            title = '培训详情'
+        }
+        wx.setNavigationBarTitle({
+            title
+        })
     },
 
-    checkboxChange(e) {
-        let value = e.detail.value
-        signUpInfo.rule = value
-        let discountMoney = 0
+    chooseItem(e) {
+        let dataset = e.currentTarget.dataset
         let rule = this.data.message.rule
+        let discountMoney = 0
+        let chooseRule = []
+        rule[dataset.index].check = !rule[dataset.index].check
         rule.forEach(item => {
-            let id = item.id.toString()
-            if (value.indexOf(id) != -1) {
+            if (item.check) {
+                chooseRule.push(item.id)
                 discountMoney += parseFloat(item.discount_money)
                 if (item.rule_type == 'number') {
                     signUpInfo.personNumber = item.rule.value
                 }
             }
         })
+        console.log(rule)
+        signUpInfo.rule = chooseRule
         this.setData({
+            'message.rule': rule,
             discountMoney
         })
     },
@@ -53,8 +68,20 @@ Page({
           method: 'get',
           data: {},
           success: function(data) {
+            if (data.rule) {
+                data.rule.forEach(item => {
+                    item.check = false
+                })
+            }
+            let message = data
+            if (that.data.type == 1) {
+                message = {
+                    info: data
+                }
+            }
             that.setData({
-                message: data
+                message,
+                finish: true
             })
           }
         })
