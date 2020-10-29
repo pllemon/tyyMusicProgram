@@ -11,7 +11,8 @@ Page({
         },
         scrollTop: 0,
         groupList: [],
-        message: {}
+        message: {},
+        sumMoney: 0
     },
 
     onLoad(params) {
@@ -92,6 +93,16 @@ Page({
     changePicker(e) {
         let key = e.currentTarget.dataset.key
         let detail = e.detail.value
+        if (key == 'form.group_id') {
+            let groupList = this.data.groupList
+            groupList.forEach(item => {
+                if (item.id == detail) {
+                    this.setData({
+                        sumMoney: item.money
+                    })
+                }
+            })
+        }
         this.setData({
             [key]: detail
         })
@@ -103,10 +114,22 @@ Page({
             url: '/examinationsingup',
             data: that.data.form,
             success: function(data) {
-                app.successToast('报名成功', function() {
-                    wx.navigateBack({
-                        delta: 1
-                    })
+                wx.requestPayment({
+                    'nonceStr': data.nonceStr,
+                    'package': data.package,
+                    'signType': data.signType,
+                    'timeStamp': data.timeStamp.toString(),
+                    'paySign': data.sign,
+                    'success':function(res){
+                      app.successToast('支付成功', function(){
+                        wx.reLaunch({
+                            url: '/pages/person/index'
+                        })
+                      })
+                    },
+                    'fail':function(res){
+                      app.showModal('支付失败')
+                    }
                 })
             }
         })

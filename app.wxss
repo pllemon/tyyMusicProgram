@@ -66,3 +66,14 @@ page{
   width: 216rpx;
   height: 202rpx;
 }
+
+
+
+.money-content{
+  border-top: 1px solid #ddd;
+}
+.money-content .money{
+  text-align: center;
+  font-size: 42rpx;
+  margin-bottom: 20rpx;
+}

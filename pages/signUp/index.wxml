@@ -29,7 +29,7 @@
         <van-cell-group>
             <view wx:for="{{form.songlist}}">
                 <van-cell>
-                    <text slot="title" class="text-black text-bold text-lg">参赛曲目{{index+1}}</text>
+                    <text slot="title" class="text-black text-bold text-lg">参赛曲目{{form.songlist.length>1?index+1:''}}</text>
                     <view slot="right-icon">
                         <view class="text-green action" wx:if="{{index == 0}}" data-idx="{{index}}" bindtap="addMusic">
                             <text class="cuIcon cuIcon-roundadd" /> <text>添加</text>
@@ -46,7 +46,8 @@
         </van-cell-group>
     </scroll-view>
     
-    <view class="padding flex flex-direction">
+    <view class="padding flex flex-direction money-content">
+        <view class="money" wx:if="{{sumMoney}}">￥{{sumMoney}}</view>
         <button class="submit-btn cu-btn lg" bindtap="signUp">立即付费</button>
     </view>
 </view>

@@ -9,7 +9,7 @@
         <van-cell-group>
             <view wx:for="{{form.signupInfo}}">
                 <van-cell>
-                    <text slot="title" class="text-black text-bold text-lg">报名人{{index+1}}</text>
+                    <text slot="title" class="text-black text-bold text-lg">报名人{{form.signupInfo.length>1?index+1:''}}</text>
                 </van-cell>
                 <van-field size="large" required label="报名人" data-key="form.signupInfo[{{index}}].signup_name" value="{{ item.signup_name }}" placeholder="请输入" bind:change="onChange" />
                 <van-field size="large" required label="联系方式" type="number" data-key="form.signupInfo[{{index}}].phone" value="{{ item.phone }}" placeholder="请输入" bind:change="onChange" />
@@ -18,7 +18,8 @@
         </van-cell-group>
     </scroll-view>
     
-    <view class="padding flex flex-direction">
+    <view class="padding flex flex-direction money-content">
+        <view class="money">￥{{sumMoney}}</view>
         <button class="submit-btn cu-btn lg" bindtap="signUp">立即付费</button>
     </view>
 </view>

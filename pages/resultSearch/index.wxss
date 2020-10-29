@@ -58,3 +58,7 @@
     font-weight: bold;
     padding-left: 30rpx;
 }
+
+.submit-btn{
+    margin: 30rpx auto;
+}

@@ -106,6 +106,9 @@ Page({
 
     signUp2() {
         signUpInfo.train_id = this.data.id
+        if (!signUpInfo.sumMoney) {
+            signUpInfo.sumMoney = this.data.message.info.money
+        }
         app.globalData.signUpInfo = signUpInfo
         wx.navigateTo({
             url: '/pages/signUp2/index?id=' + this.data.id

@@ -7,7 +7,8 @@ Page({
             signupInfo: []
         },
         scrollTop: 0,
-        message: {}
+        message: {},
+        sumMoney: ''
     },
 
     onLoad() {
@@ -24,7 +25,8 @@ Page({
             })
         }
         this.setData({
-            form
+            form,
+            sumMoney: signUpInfo.sumMoney
         })
         this.getDetails()
     },
@@ -57,10 +59,22 @@ Page({
             url: '/trainsingup',
             data: that.data.form,
             success: function(data) {
-                app.successToast('报名成功', function() {
-                    wx.navigateBack({
-                        delta: 1
-                    })
+                wx.requestPayment({
+                    'nonceStr': data.nonceStr,
+                    'package': data.package,
+                    'signType': data.signType,
+                    'timeStamp': data.timeStamp.toString(),
+                    'paySign': data.sign,
+                    'success':function(res){
+                      app.successToast('支付成功', function(){
+                        wx.reLaunch({
+                            url: '/pages/person/index'
+                        })
+                      })
+                    },
+                    'fail':function(res){
+                      app.showModal('支付失败')
+                    }
                 })
             }
         })

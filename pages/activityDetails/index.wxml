@@ -1,7 +1,7 @@
 <view class="page-content" wx:if="{{finish}}">
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
         <view class="item bg-img">
-            <image src="{{message.info.banner_url}}" class="cover"/>
+            <gdImage src="{{ message.info.banner_url }}" class="cover" />
             <button class="share-btn" open-type="share" wx:if="{{type == 1}}">
                 <image src="../../image/share.png" class="share"/>
             </button>
@@ -14,7 +14,7 @@
                 </view>
 			</view>
 		</view>
-        <view class="details padding">富文本信息</view>
+        <view class="details padding">{{message.info.desc}}</view>
         <view wx:if="{{type ==2}}">
             <block wx:for="{{message.rule}}">
                 <view wx:if="{{item.rule_type == 'number'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">

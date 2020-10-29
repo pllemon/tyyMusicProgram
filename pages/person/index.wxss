@@ -40,3 +40,11 @@
     font-size: 32rpx !important;
     font-weight: bold;
 }
+
+.get-btn{
+    padding: 8px 10px;
+    font-size: 14px;
+    width: auto;
+    margin-bottom: 10px;
+
+}
