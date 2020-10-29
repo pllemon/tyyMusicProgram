@@ -6,10 +6,6 @@ let systemDict = {
 App({
   onLaunch: function () {
     let that = this
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
 
     // 登录
     wx.login({
@@ -17,41 +13,40 @@ App({
         that.request({
           url: '/userlogin',
           method: 'get',
+          hideLoading: true,
           data: {
             code: res.code
           },
           success: function(data) {
-            that.globalData.loginInfo = data
-            that.globalData.session = data
-            if (that.loginCallback) {
-              that.loginCallback()
-            }
+            that.globalData.sessionKey = data.session_key
+            that.globalData.session = data.session_id
+            that.getUserInfo()
           }
         })
       }
     })
 
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              console.log(res)
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           console.log(res)
+    //           // 可以将 res 发送给后台解码出 unionId
+    //           this.globalData.userInfo = res.userInfo
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
+    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //           // 所以此处加入 callback 以防止这种情况
+    //           if (this.userInfoReadyCallback) {
+    //             this.userInfoReadyCallback(res)
+    //           }
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
 
   request: function (obj) {
@@ -63,7 +58,7 @@ App({
       })
     }
     wx.request({
-      url: 'http://www.dsfjjwx.com:8081' + obj.url,
+      url: 'http://music.eqask.com' + obj.url,
       method: obj.method || 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -116,6 +111,23 @@ App({
     })
   },
 
+
+  getUserInfo() {
+    let that = this
+    that.request({
+      url: '/getuserinfo',
+      method: 'get',
+      data: {},
+      hideLoading: true,
+      success: function(data) {
+        that.globalData.userInfo = data
+        if (that.loginCallback) {
+          that.loginCallback()
+        }
+      }
+    })
+  },
+
   showToast(title, icon = 'none') {
     wx.showToast({
       icon: icon,
@@ -140,7 +152,7 @@ App({
   
   globalData: {
     userInfo: null,
-    loginInfo: null,
+    sessionKey: null,
     session: '',
     signUpInfo: null,
     systemDict

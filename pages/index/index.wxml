@@ -2,13 +2,14 @@
 <view class="page-content">
   <view class="main-content">
     <view wx:for="{{list}}" class="item bg-img">
-      <image src="{{item.banner_url}}" class="cover"/>
+      <gdImage src="{{ item.banner_url }}" class="cover" />
       <view class="text-white bg-shadeTop time">
         <text>{{item.activity_time}}</text>
       </view>
 			<view class="text-white bg-shadeBottom message flex flex-wrap justify-between align-center">
 				<view class="title">{{item.title}}</view>
-        <button class="cu-btn round sm" data-id="{{item.indextype == 1 ? item.examination_id : item.train_id}}" data-type="{{item.indextype}}" bindtap="signUp">我要报名</button>
+        <button wx:if="{{!userInfo.phone}}" class="cu-btn round sm" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">我要报名</button>
+        <button wx:else class="cu-btn round sm" data-id="{{item.indextype == 1 ? item.examination_id : item.train_id}}" data-type="{{item.indextype}}" bindtap="signUp">我要报名</button>
 			</view>
 		</view>
   </view>

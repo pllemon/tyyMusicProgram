@@ -19,6 +19,7 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "gdImage": "/components/image/index",
     "common-picker": "/components/commonPicker/commonPicker",
     
     "tab": "/components/tab/index",

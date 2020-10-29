@@ -1,0 +1,18 @@
+<view class="gd-image" style="width:{{width}};height:{{height}}">
+    <image 
+        wx:if="{{src}}" 
+        src="{{needPad ? 'http://music.eqask.com/' + src : src}}" 
+        mode="{{mode}}" 
+        lazy-load="{{true}}"
+        bindtap="preview"
+    />
+    <image 
+        wx:else 
+        src="/image/example/user6.png" 
+        mode="{{mode}}" 
+        lazy-load="{{true}}"
+        bindtap="preview"
+    />
+    <view class="label" wx:if="{{label}}">{{label}}</view>
+    <view class="label2" wx:if="{{label2}}">{{label2}}</view>
+</view>
