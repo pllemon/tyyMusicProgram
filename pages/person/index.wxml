@@ -24,11 +24,10 @@
                 </view>
             </van-cell>
             <view class="padding bg-white train-list">
-                <view class="item"><text class="name">培训1</text><text class="time">2020-12-12 至 2020-12-20</text></view>
-                <view class="item"><text class="name">培训1</text><text class="time">2020-12-12 至 2020-12-20</text></view>
-                <view class="item"><text class="name">培训1</text><text class="time">2020-12-12 至 2020-12-20</text></view>
-                <view class="item"><text class="name">培训1</text><text class="time">2020-12-12 至 2020-12-20</text></view>
-                <view class="item"><text class="name">培训1</text><text class="time">2020-12-12 至 2020-12-20</text></view>
+                <block wx:if="{{trainList.length}}">
+                    <view class="item" wx:for="{{trainList}}"><text class="name">{{item.title}}</text><text class="time">{{item.activity_time}}</text></view>
+                </block>
+                <view wx:else class="item" style="justify-content:center">无相关数据</view>
             </view>
         </van-cell-group>
         <van-cell-group>
@@ -40,9 +39,9 @@
             </van-cell>
         </van-cell-group>
 
-        <view class="padding flex flex-direction" style="margin-top:50rpx">
+        <!-- <view class="padding flex flex-direction" style="margin-top:50rpx">
             <button class="submit-btn cu-btn bg-red lg" bindtap="signUp">退出登录</button>
-        </view>
+        </view> -->
     </view>
     <tab active="1"/>
 </view>

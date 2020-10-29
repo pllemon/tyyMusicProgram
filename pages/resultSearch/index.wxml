@@ -1,34 +1,43 @@
 <view class="padding flex flex-direction align-center bg-white margin-bottom-sm">
     <view class="title">身份证号码</view>
-    <input type="idcard" placeholder="请输入需要查询的身份证号码" class="input"/>
+    <input type="idcard" focus="{{true}}" placeholder="请输入需要查询的身份证号码" class="input"/>
     <button class="submit-btn cu-btn lg" bindtap="signUp">确认</button>
 </view>
 
-<view class="nores-tips">
+<view class="nores-tips" wx:if="{{list.length == 0}}">
     <image src="../../image/nres.png" />
     <view>找不到你的成绩/比赛记录哦！</view>
     <view>快去报名参加你喜欢的项目/比赛吧！</view>
 </view>
 
-<view class="cu-bar bg-white">
-    <view class="part-title">我的成绩</view>
-</view>
-<view class="bg-white">
-    <view wx:for="{{[1,2,3]}}" class="match-item">
-        <view class="name">2020秋季全国钢琴大赛</view>
-        <view>一等奖</view>
+<block  wx:if="{{list.length}}">
+    <view class="cu-bar bg-white">
+        <view class="part-title">我的成绩</view>
     </view>
-</view>
+    <view class="bg-white">
+        <view wx:for="{{[1,2,3]}}" class="match-item">
+            <view class="name">2020秋季全国钢琴大赛</view>
+            <view>一等奖</view>
+        </view>
+    </view>
 
-<view class="cu-bar bg-white" style="margin-top: 30rpx">
-    <view class="part-title">我的比赛</view>
-</view>
-<view class="bg-white">
-    <view wx:for="{{[1,2,3]}}" class="match-item">
-        <view class="name">2020秋季全国钢琴大赛</view>
-        <view>2020-10-10 10:00</view>
-        <view><text class="cuIcon-location"></text> 比赛地区：广州赛区</view>
-        <view><text class="cuIcon-time"></text> 比赛时间：</view>
-        <view><text class="cuIcon-vipcard"></text> 准考证号：354523134141423</view>
+    <view class="cu-bar bg-white" style="margin-top: 30rpx">
+        <view class="part-title">我的比赛</view>
     </view>
-</view>
+    <view class="bg-white">
+        <view wx:for="{{[1,2,3]}}" class="match-item2">
+            <view class="row">
+                <view>2020秋季全国钢琴大赛</view>
+                <view>2020-10-10 10:00</view>
+            </view>
+            <view class="row">
+                <view>赛区：</view>
+                <view>广州赛区</view>
+            </view>
+            <view class="row">
+                <view>准考证号：</view>
+                <view>78955778990</view>
+            </view>
+        </view>
+    </view>
+</block>

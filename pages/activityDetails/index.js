@@ -13,7 +13,8 @@ Page({
             '<=': '小于等于'
         },
         discountMoney: 0,
-        finish: false
+        finish: false,
+        personNumber: 1
     },
 
     onLoad(params) {
@@ -46,21 +47,24 @@ Page({
         let rule = this.data.message.rule
         let discountMoney = 0
         let chooseRule = []
+        let personNumber = 1
         rule[dataset.index].check = !rule[dataset.index].check
         rule.forEach(item => {
             if (item.check) {
                 chooseRule.push(item.id)
                 discountMoney += parseFloat(item.discount_money)
                 if (item.rule_type == 'number') {
-                    signUpInfo.personNumber = item.rule.value
+                    personNumber = item.rule.value
                 }
             }
         })
-        console.log(rule)
         signUpInfo.rule = chooseRule
+        signUpInfo.personNumber = personNumber
+        signUpInfo.sumMoney = (this.data.message.info.money - discountMoney) * personNumber
         this.setData({
             'message.rule': rule,
-            discountMoney
+            discountMoney,
+            personNumber
         })
     },
 

@@ -1,7 +1,13 @@
-<view class="bg-white">
-    <view wx:for="{{[1,2,3]}}" class="pay-item">
-        <view class="text-lg text-black text-bold">付款时间：2020-10-12 20:20</view>
-        <view>付款项目：2020秋季全国钢琴大赛</view>
-        <view class="text-lg text-red money">￥300.00</view>
+<view class="bg-white" wx:if="{{finish && list.length}}">
+    <view wx:for="{{list}}" class="pay-item">
+        <view>付款时间：{{item.pay_time}}</view>
+        <view>付款项目：{{item.body}}</view>
+        <view class="money">￥{{item.pay_money}}</view>
     </view>
+</view>
+
+
+<view class="nores-tips" wx:if="{{finish && list.length == 0}}">
+    <image src="../../image/nres.png" />
+    <view>无相关数据</view>
 </view>

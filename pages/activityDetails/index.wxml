@@ -46,7 +46,7 @@
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
                         <view class="title">特殊优惠：</view>
-                        <view>{{ruleOptions[item.rule.calculation]}}岁{{item.rule.value}}劲享{{item.discount_money}}元减免优惠</view>
+                        <view>{{ruleOptions[item.rule.calculation]}}{{item.rule.value}}岁劲享{{item.discount_money}}元减免优惠</view>
                     </view>
                     <view class="buy-btn">
                         <view class="active-price"><text>￥</text>{{item.discount_money}}</view>
@@ -58,6 +58,6 @@
     </scroll-view>
     <view class="padding flex flex-direction" >
         <button class="submit-btn cu-btn lg" wx:if="{{type == 1}}" bindtap="signUp">立即报名（填写资料）</button>
-        <button class="submit-btn cu-btn lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{message.info.money - discountMoney}}（原价 ￥{{message.info.money}}）</button>
+        <button class="submit-btn cu-btn lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{(message.info.money - discountMoney) * personNumber}}（原价 ￥{{message.info.money * personNumber}}）</button>
     </view>
 </view>
