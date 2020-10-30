@@ -110,10 +110,12 @@ Page({
                     info: data
                 }
             }
-            let descStr = (message.info.desc.replace(/<(.+?)>/gi,"&lt;$1&gt;")).replace(/ /gi,"&nbsp;")
-            let descArr = []
-            descStr.split('\n').forEach(item=>descArr.push(`<p style="line-height:1.8">${item}</p>`));
-            desc = descArr.join('')
+            if (message.info.desc) {
+                let descStr = (message.info.desc.replace(/<(.+?)>/gi,"&lt;$1&gt;")).replace(/ /gi,"&nbsp;")
+                let descArr = []
+                descStr.split('\n').forEach(item=>descArr.push(`<p style="line-height:1.8">${item}</p>`));
+                desc = descArr.join('')
+            }
             console.log(desc)
             that.setData({
                 desc,
