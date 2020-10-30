@@ -26,12 +26,22 @@ Component({
    */
   methods: {
     goStudy(){
+      let userInfo = app.globalData.userInfo;
+      if (!userInfo.phone) {
+        this.selectComponent("#login").showPopup();
+        return false;
+      }
       wx.reLaunch({
         url: '/pages/index/index',
       })
     },
 
     goPerson() {
+      let userInfo = app.globalData.userInfo;
+      if (!userInfo.phone) {
+        this.selectComponent("#login").showPopup();
+        return false;
+      }
       wx.reLaunch({
         url: '/pages/person/index',
       })

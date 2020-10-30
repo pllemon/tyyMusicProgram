@@ -1,0 +1,15 @@
+.popup-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500rpx;
+    width: 600rpx;
+}
+.popup-content button{
+    margin-top: 20px;
+}
+.cu-avatar.lg{
+    width: 124rpx;
+    height: 124rpx;
+}

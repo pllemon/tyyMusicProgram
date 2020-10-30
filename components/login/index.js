@@ -1,48 +1,59 @@
 const app = getApp();
 Component({
-  /**
-   * 组件的一些选项
-   */
-  options: {
-    addGlobalClass: true,
-    multipleSlots: true
-  },
-  /**
-   * 组件的对外属性
-   */
-  properties: {
-    active: {
-      type: String,
-      default: '0'
-    }
-  },
-  ready() {
-    let userInfo = app.globalData.userInfo
-    this.setData({
-      userInfo
-    })
-  },
-  /**
-   * 组件的初始数据
-   */
   data: {
-    showAuth: true,
+    showAuth: false,
+    authInfo: null,
     userInfo: null
   },
-  /**
-   * 组件的方法列表
-   */
   methods: {
-    goStudy(){
-      wx.reLaunch({
-        url: '/pages/index/index',
+    showPopup() {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        authInfo: app.globalData.authInfo,
+        showAuth: true
       })
     },
 
-    goPerson() {
-      wx.reLaunch({
-        url: '/pages/person/index',
+    hidePopup() {
+      this.setData({
+        showAuth: false
       })
-    }
+    },
+
+    getUserInfo(e) {
+      app.globalData.authInfo = e.detail.userInfo
+      this.setData({
+        authInfo: e.detail.userInfo,
+        userInfo: app.globalData.userInfo,
+      })
+      if (app.globalData.userInfo.phone) {
+        this.hidePopup()
+      }
+    },
+
+    getPhoneNumber (e) {
+      let that = this
+      wx.login({
+        success: res => {
+          app.request({
+            url: '/getuserphone',
+            method: 'get',
+            data: {
+              session_key: app.globalData.sessionKey,
+              code: res.code,
+              iv: e.detail.iv,
+              encryptedData: e.detail.encryptedData,
+            },
+            success: function(data) {
+              app.globalData.userInfo.phone = data.phone
+              that.setData({
+                'userInfo.phone': data.phone
+              })
+              that.hidePopup()
+            }
+          })
+        }
+      })
+    },
   }
 })

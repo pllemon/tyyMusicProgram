@@ -2,7 +2,10 @@
     <scroll-view class="main-content" scroll-top="{{scrollTop}}" scroll-y="{{true}}">
         <view class="item bg-img">
             <gdImage src="{{ message.info.banner_url }}" class="cover" />
-            <button class="share-btn" open-type="share" wx:if="{{type == 1}}">
+            <button class="share-btn" open-type="share" wx:if="{{userInfo.phone}}">
+                <image src="../../image/share.png" class="share"/>
+            </button>
+            <button class="share-btn" bindtap="showPopup" wx:if="{{!userInfo.phone}}">
                 <image src="../../image/share.png" class="share"/>
             </button>
             <view class="text-white bg-shadeBottom message flex flex-wrap justify-between align-center">
@@ -14,7 +17,9 @@
                 </view>
 			</view>
 		</view>
-        <view class="details padding">{{message.info.desc}}</view>
+        <view class="details padding">
+            <rich-text nodes="{{desc}}" space="nbsp"></rich-text>
+        </view>
         <view wx:if="{{type ==2}}">
             <block wx:for="{{message.rule}}">
                 <view wx:if="{{item.rule_type == 'number'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
@@ -61,3 +66,4 @@
         <button class="submit-btn cu-btn lg" wx:if="{{type == 2}}" bindtap="signUp2">折后价：￥{{(message.info.money - discountMoney) * personNumber}}（原价 ￥{{message.info.money * personNumber}}）</button>
     </view>
 </view>
+<login id="login" />

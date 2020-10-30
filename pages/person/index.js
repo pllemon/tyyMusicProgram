@@ -9,7 +9,7 @@ Page({
   onLoad() {
     if (app.globalData.userInfo) {
       this.init()
-    } else if (this.data.canIUse){
+    } else {
       app.loginCallback = () => {
         this.init()
       }

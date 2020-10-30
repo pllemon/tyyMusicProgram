@@ -10,3 +10,5 @@
     <view>我的账户</view>
   </view>
 </view>
+
+<login id="login" />

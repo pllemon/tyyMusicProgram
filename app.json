@@ -23,6 +23,7 @@
     "common-picker": "/components/commonPicker/commonPicker",
     
     "tab": "/components/tab/index",
+    "login": "/components/login/index",
     "van-field": "@vant/weapp/field/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",

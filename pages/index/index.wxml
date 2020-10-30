@@ -8,10 +8,11 @@
       </view>
 			<view class="text-white bg-shadeBottom message flex flex-wrap justify-between align-center">
 				<view class="title">{{item.title}}</view>
-        <button wx:if="{{!userInfo.phone}}" class="cu-btn round sm" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">我要报名</button>
-        <button wx:else class="cu-btn round sm" data-id="{{item.indextype == 1 ? item.examination_id : item.train_id}}" data-type="{{item.indextype}}" bindtap="signUp">我要报名</button>
+        <!-- <button wx:if="{{!userInfo.phone}}" class="cu-btn round sm" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">我要报名</button> -->
+        <button class="cu-btn round sm" data-id="{{item.indextype == 1 ? item.examination_id : item.train_id}}" data-type="{{item.indextype}}" bindtap="signUp">我要报名</button>
 			</view>
 		</view>
   </view>
   <tab />
+  <login id="login" />
 </view>

@@ -52,7 +52,7 @@ App({
       })
     }
     wx.request({
-      url: 'http://music.eqask.com' + obj.url,
+      url: 'https://music.eqask.com' + obj.url,
       method: obj.method || 'POST',
       header: {
         'content-type': 'application/json',
@@ -157,7 +157,7 @@ App({
 
   
   globalData: {
-    userInfo: null,
+    userInfo: {},
     authInfo: null,
     sessionKey: null,
     session: '',

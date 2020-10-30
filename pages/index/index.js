@@ -5,9 +5,6 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
     list: []
   },
   //事件处理函数
@@ -20,7 +17,7 @@ Page({
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.init()
-    } else if (this.data.canIUse){
+    } else{
       app.loginCallback = () => {
         this.init()
       }
@@ -29,37 +26,10 @@ Page({
     this.getCourseList();
   },
 
-  getPhoneNumber (e) {
-    let that = this
-    console.log(e)
-    wx.login({
-      success: res => {
-        app.request({
-          url: '/getuserphone',
-          method: 'get',
-          data: {
-            session_key: app.globalData.sessionKey,
-            code: res.code,
-            iv: e.detail.iv,
-            encryptedData: e.detail.encryptedData,
-          },
-          success: function(data) {
-            app.globalData.userInfo.phone = data.phone
-            that.setData({
-              'userInfo.phone': data.phone
-            })
-          }
-        })
-      }
-    })
-  },
-
   init() {
     let userInfo = app.globalData.userInfo
-    console.log(userInfo)
     this.setData({
-      userInfo,
-      hasUserInfo: true
+      userInfo
     })
   },
 
@@ -77,21 +47,16 @@ Page({
     })
   },
 
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-
   signUp(e) {
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo.phone) {
+      this.selectComponent("#login").showPopup();
+      return false;
+    }
     let type = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/activityDetails/index?id='+ id + '&type=' + type
     })
-  },
-
-
+  }
 })

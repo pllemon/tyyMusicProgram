@@ -14,7 +14,8 @@ Page({
         },
         discountMoney: 0,
         finish: false,
-        personNumber: 1
+        personNumber: 1,
+        desc: ''
     },
 
     onLoad(params) {
@@ -22,7 +23,13 @@ Page({
             'id': params.id,
             'type': params.type
         })
-        this.getDetails()
+        if (app.globalData.userInfo.phone) {
+            this.getDetails()
+        } else{
+            app.loginCallback = () => {
+                this.getDetails()
+            }
+        }
 
         let title = ''
         if (params.type == 1) {
@@ -36,6 +43,14 @@ Page({
     },
 
     onShareAppMessage: function (res) {
+        app.request({
+            url: '/addsharelog',
+            method: 'post',
+            data: {
+                desc: this.data.message.info.title,
+                nickname: app.globalData.authInfo ? app.globalData.authInfo.nickName : ''
+            }
+        })
         return {
             title: this.data.message.info.title,
             path: '/pages/activityDetails/index?id=' + this.data.message.info.id
@@ -70,10 +85,15 @@ Page({
 
     getDetails() {
         let that = this
+        let userInfo = app.globalData.userInfo
+        that.setData({
+            userInfo
+        })
         let url = '/examinationinfo?examination_id=' + that.data.id
         if (that.data.type == 2) {
             url = '/traininfo?train_id=' + that.data.id
         }
+        let desc = ''
         app.request({
           url,
           method: 'get',
@@ -90,7 +110,13 @@ Page({
                     info: data
                 }
             }
+            let descStr = (message.info.desc.replace(/<(.+?)>/gi,"&lt;$1&gt;")).replace(/ /gi,"&nbsp;")
+            let descArr = []
+            descStr.split('\n').forEach(item=>descArr.push(`<p style="line-height:1.8">${item}</p>`));
+            desc = descArr.join('')
+            console.log(desc)
             that.setData({
+                desc,
                 message,
                 finish: true
             })
@@ -99,12 +125,22 @@ Page({
     },
 
     signUp() {
+        let userInfo = app.globalData.userInfo;
+        if (!userInfo.phone) {
+          this.selectComponent("#login").showPopup();
+          return false;
+        }
         wx.navigateTo({
             url: '/pages/signUp/index?id=' + this.data.id
         })
     },
 
     signUp2() {
+        let userInfo = app.globalData.userInfo;
+        if (!userInfo.phone) {
+          this.selectComponent("#login").showPopup();
+          return false;
+        }
         signUpInfo.train_id = this.data.id
         if (!signUpInfo.sumMoney) {
             signUpInfo.sumMoney = this.data.message.info.money
@@ -113,5 +149,9 @@ Page({
         wx.navigateTo({
             url: '/pages/signUp2/index?id=' + this.data.id
         })
+    },
+
+    showPopup() {
+        this.selectComponent("#login").showPopup();
     }
 })

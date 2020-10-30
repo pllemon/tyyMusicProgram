@@ -1,8 +1,12 @@
 <van-popup
   show="{{ showAuth }}"
   round
-  custom-style="height: 300rpx"
-  bind:close="onClose"
+  bind:close="hidePopup"
 >
-  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  <view class="popup-content">
+    <image wx:if="{{!authInfo}}" src="../../image/people.png" class="margin-right" style="width:124rpx;height:124rpx" />
+    <view class="cu-avatar margin-right lg"  wx:if="{{authInfo}}" style="background-size:cover;background-image:url({{authInfo.avatarUrl}});"></view>
+    <button wx:if="{{!authInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权</button>
+    <button wx:if="{{authInfo && !userInfo.phone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机授权</button>
+  </view>
 </van-popup>
