@@ -31,9 +31,7 @@ Page({
         app.request({
           url: '/examinationachievement',
           method: 'get',
-          data: {
-            peopleid: this.data.peopleid
-          },
+          data: that.data.form,
           success: function(data) {
             that.setData({
                 achievement: data.achievement,
