@@ -7,23 +7,11 @@ Page({
   },
 
   onLoad() {
-    if (app.globalData.userInfo) {
+    if (app.globalData.userInfo.user_id) {
       this.init()
     } else {
       app.loginCallback = () => {
         this.init()
-      }
-    }
-    
-    if (app.globalData.authInfo) {
-      this.setData({
-        authInfo: app.globalData.authInfo
-      })
-    } else{
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          authInfo: res.userInfo
-        })
       }
     }
   },
@@ -54,7 +42,9 @@ Page({
 
   init() {
     let userInfo = app.globalData.userInfo
+    let authInfo = app.globalData.authInfo
     this.setData({
+      authInfo,
       userInfo,
       hasUserInfo: true
     })

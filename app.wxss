@@ -40,7 +40,8 @@ page{
   position: relative;
 }
 .picker-cell .title{
-  width: 220rpx;
+  width: 110px;
+  color: #646566;
 }
 .picker-cell common-picker{
   text-align: left;
@@ -76,4 +77,9 @@ page{
   text-align: center;
   font-size: 42rpx;
   margin-bottom: 20rpx;
+}
+
+
+.van-field__label{
+  font-size: 32rpx !important;
 }

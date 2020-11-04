@@ -13,6 +13,6 @@
 			</view>
 		</view>
   </view>
-  <tab />
-  <login id="login" />
+  <tab  wx:if="{{finish}}" />
+  <login id="login"/>
 </view>

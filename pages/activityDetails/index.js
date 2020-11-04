@@ -23,11 +23,11 @@ Page({
             'id': params.id,
             'type': params.type
         })
-        if (app.globalData.userInfo.phone) {
-            this.getDetails()
+        if (app.globalData.userInfo.user_id) {
+            this.getDetails(false)
         } else{
             app.loginCallback = () => {
-                this.getDetails()
+                this.getDetails(true)
             }
         }
 
@@ -53,7 +53,7 @@ Page({
         })
         return {
             title: this.data.message.info.title,
-            path: '/pages/activityDetails/index?id=' + this.data.message.info.id
+            path: '/pages/activityDetails/index?id=' + this.data.id + '&type=' + this.data.type
         }
     },
 
@@ -83,7 +83,7 @@ Page({
         })
     },
 
-    getDetails() {
+    getDetails(hideLoading) {
         let that = this
         let userInfo = app.globalData.userInfo
         that.setData({
@@ -98,6 +98,7 @@ Page({
           url,
           method: 'get',
           data: {},
+          hideLoading,
           success: function(data) {
             if (data.rule) {
                 data.rule.forEach(item => {
@@ -116,12 +117,14 @@ Page({
                 descStr.split('\n').forEach(item=>descArr.push(`<p style="line-height:1.8">${item}</p>`));
                 desc = descArr.join('')
             }
-            console.log(desc)
             that.setData({
                 desc,
                 message,
                 finish: true
             })
+          },
+          complete: function() {
+            wx.hideLoading()
           }
         })
     },

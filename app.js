@@ -6,39 +6,13 @@ let systemDict = {
 App({
   onLaunch: function () {
     let that = this
-
-    // 登录
-    wx.login({
-      success: res => {
-        that.request({
-          url: '/userlogin',
-          method: 'get',
-          hideLoading: true,
-          data: {
-            code: res.code
-          },
-          success: function(data) {
-            that.globalData.sessionKey = data.session_key
-            that.globalData.session = data.session_id
-            that.getUserInfo()
-          }
-        })
-      }
+    wx.showLoading({
+      title: '加载中',
+      mask: true
     })
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: res => {
-              this.globalData.authInfo = res.userInfo
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
+    Promise.all([this.wxAuth(), this.userLogin()]).then(result => {
+      if (that.loginCallback) {
+        that.loginCallback()
       }
     })
   },
@@ -105,20 +79,62 @@ App({
     })
   },
 
-
-  getUserInfo() {
-    let that = this
-    that.request({
-      url: '/getuserinfo',
-      method: 'get',
-      data: {},
-      hideLoading: true,
-      success: function(data) {
-        that.globalData.userInfo = data
-        if (that.loginCallback) {
-          that.loginCallback()
+  // 微信授权
+  wxAuth() {
+    return new Promise((resolve, reject) => {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            wx.getUserInfo({
+              success: res => {
+                this.globalData.authInfo = res.userInfo
+                resolve()
+              },
+              fail: () => {
+                resolve()
+              }
+            })
+          } else {
+            resolve()
+          }
+        },
+        fail: () => {
+          resolve()
         }
-      }
+      })
+    })
+  },
+
+  // 获取用户信息
+  userLogin() {
+    return new Promise((resolve, reject) => {
+      let that = this
+      wx.login({
+        success: res => {
+          that.request({
+            url: '/userlogin',
+            method: 'get',
+            hideLoading: true,
+            data: {
+              code: res.code
+            },
+            success: function(data) {
+              that.globalData.sessionKey = data.session_key
+              that.globalData.session = data.session_id
+              that.request({
+                url: '/getuserinfo',
+                method: 'get',
+                data: {},
+                hideLoading: true,
+                success: function(data) {
+                  that.globalData.userInfo = data
+                  resolve()
+                }
+              })
+            }
+          })
+        }
+      })
     })
   },
 

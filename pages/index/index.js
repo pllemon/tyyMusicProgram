@@ -5,7 +5,8 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
-    list: []
+    list: [],
+    finish: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,34 +16,38 @@ Page({
   },
 
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.init()
+    if (app.globalData.userInfo.user_id) {
+      this.init(false)
     } else{
       app.loginCallback = () => {
-        this.init()
+        this.init(true)
       }
     }
-
-    this.getCourseList();
   },
 
-  init() {
+  init(hideLoading) {
     let userInfo = app.globalData.userInfo
     this.setData({
-      userInfo
+      userInfo,
+      finish: true
     })
+    this.getCourseList(hideLoading);
   },
 
-  getCourseList() {
+  getCourseList(hideLoading) {
     let that = this
     app.request({
       url: '/indexlist',
       method: 'get',
       data: {},
+      hideLoading,
       success: function(data) {
         that.setData({
           list: data
         })
+      },
+      complete: function() {
+        wx.hideLoading()
       }
     })
   },
