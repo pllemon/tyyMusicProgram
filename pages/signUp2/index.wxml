@@ -14,6 +14,7 @@
                 <van-field size="large" required label="报名人" data-key="form.signupInfo[{{index}}].signup_name" value="{{ item.signup_name }}" placeholder="请输入" bind:change="onChange" />
                 <van-field size="large" required label="联系方式" type="number" data-key="form.signupInfo[{{index}}].phone" value="{{ item.phone }}" placeholder="请输入" bind:change="onChange" />
                 <van-field size="large" required label="身份证号码" type="idcard" data-key="form.signupInfo[{{index}}].peopleid" value="{{ item.peopleid }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" label="机构" data-key="form.signupInfo[{{index}}].mechanism" value="{{ item.mechanism }}" placeholder="请输入" bind:change="onChange" />
             </view>
         </van-cell-group>
     </scroll-view>

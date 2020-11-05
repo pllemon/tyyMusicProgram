@@ -10,5 +10,6 @@
     <view>我的账户</view>
   </view>
 </view>
+<view style="text-align:center;font-size:13px;color:#888;padding:10rpx">广东钢琴协会提供服务</view>
 
 <login id="login" />

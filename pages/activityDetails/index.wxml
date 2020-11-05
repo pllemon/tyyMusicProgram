@@ -22,7 +22,7 @@
         </view>
         <view wx:if="{{type ==2}}">
             <block wx:for="{{message.rule}}">
-                <view wx:if="{{item.rule_type == 'number'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'number' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
@@ -34,7 +34,7 @@
                         <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'time'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'time' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
@@ -46,7 +46,7 @@
                         <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'age'}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'age' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">

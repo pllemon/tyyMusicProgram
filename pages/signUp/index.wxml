@@ -6,6 +6,10 @@
        </view>
 
         <van-cell-group>
+            <view class="picker-cell require">
+                <text class="title">报名组别</text>
+                <common-picker arr="{{groupList}}" value="{{form.group_id}}" key="group_name" data-key="form.group_id" bind:change="changePicker" />
+            </view>
             <van-field size="large" required label="报名人" data-key="form.signup_name" value="{{ form.signup_name }}" placeholder="请输入" bind:change="onChange" />
             <view class="picker-cell require">
                 <text class="title">性别</text>
@@ -20,10 +24,7 @@
         <van-cell-group>
             <van-field size="large" required label="指导老师" data-key="form.instructor" value="{{ form.instructor }}" placeholder="请输入" bind:change="onChange" />
             <van-field size="large" required label="联系方式" type="number" data-key="form.instructor_phone" value="{{ form.instructor_phone }}" placeholder="请输入" bind:change="onChange" />
-            <view class="picker-cell require">
-                <text class="title">报名组别</text>
-                <common-picker arr="{{groupList}}" value="{{form.group_id}}" key="group_name" data-key="form.group_id" bind:change="changePicker" />
-            </view>
+            
         </van-cell-group>
 
         <van-cell-group>
@@ -43,6 +44,11 @@
                 <van-field size="large" required label="作品号/序号" data-key="form.songlist[{{index}}].song_number" value="{{ item.song_number }}" placeholder="请输入" bind:change="onChange" />
                 <van-field size="large" required label="作者" data-key="form.songlist[{{index}}].song_authod" value="{{ item.song_authod }}" placeholder="请输入" bind:change="onChange" />
             </view>
+        </van-cell-group>
+
+        
+        <van-cell-group>
+            <van-field size="large" label="分赛场" data-key="form.fensaichang" value="{{ form.fensaichang }}" placeholder="请输入" bind:change="onChange" />  
         </van-cell-group>
     </scroll-view>
     
