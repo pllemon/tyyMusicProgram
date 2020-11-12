@@ -12,7 +12,8 @@ Page({
         scrollTop: 0,
         groupList: [],
         message: {},
-        sumMoney: 0
+        sumMoney: 0,
+        cardType: 1
     },
 
     onLoad(params) {
@@ -21,6 +22,18 @@ Page({
         })
         this.getDetails()
         this.getGroup()
+    },
+
+    showOtherCard() {
+        this.setData({
+            cardType: 2
+        })
+    },
+    
+    showIdCard() {
+        this.setData({
+            cardType: 1
+        })
     },
 
     getDetails() {
