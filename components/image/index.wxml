@@ -1,7 +1,7 @@
 <view class="gd-image" style="width:{{width}};height:{{height}}">
     <image 
         wx:if="{{src}}" 
-        src="{{needPad ? 'https://music.eqask.com/' + src : src}}" 
+        src="{{needPad ? 'http://120.25.25.90:8082/' + src : src}}" 
         mode="{{mode}}" 
         lazy-load="{{true}}"
         bindtap="preview"

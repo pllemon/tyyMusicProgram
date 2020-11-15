@@ -43,7 +43,8 @@ page{
   width: 110px;
   color: #646566;
 }
-.picker-cell common-picker{
+.picker-cell common-picker,
+.picker-cell date-picker{
   text-align: left;
   flex: 1;
 }

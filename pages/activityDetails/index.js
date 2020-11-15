@@ -63,7 +63,24 @@ Page({
         let discountMoney = 0
         let chooseRule = []
         let personNumber = 1
+        if (rule[dataset.index].disable) {
+            return false
+        }
         rule[dataset.index].check = !rule[dataset.index].check
+        if (rule[dataset.index].rule.only) {
+            rule.forEach((item,index) => {
+                if (rule[dataset.index].check) {
+                    if (dataset.index != index) {
+                        item.disable = true
+                        item.check = false
+                    }
+                } else {
+                    if (dataset.index != index) {
+                        item.disable = false
+                    }
+                }
+            })
+        }
         rule.forEach(item => {
             if (item.check) {
                 chooseRule.push(item.id)
@@ -103,6 +120,7 @@ Page({
             if (data.rule) {
                 data.rule.forEach(item => {
                     item.check = false
+                    item.disable = false
                 })
             }
             let message = data

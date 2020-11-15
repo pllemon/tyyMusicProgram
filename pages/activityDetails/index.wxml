@@ -22,7 +22,7 @@
         </view>
         <view wx:if="{{type ==2}}">
             <block wx:for="{{message.rule}}">
-                <view wx:if="{{item.rule_type == 'number' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'number' && item.status}}" class="buy-item light flex align-center justify-between {{item.disable?'disable':''}}"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
@@ -34,7 +34,7 @@
                         <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'time' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'time' && item.status}}" class="buy-item light flex align-center justify-between {{item.disable?'disable':''}}"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
@@ -46,12 +46,24 @@
                         <view>优惠</view>
                     </view>
                 </view>
-                <view wx:if="{{item.rule_type == 'age' && item.status}}" class="buy-item light flex align-center justify-between"  data-index="{{index}}" bindtap="chooseItem">
+                <view wx:if="{{item.rule_type == 'age' && item.status}}" class="buy-item light flex align-center justify-between {{item.disable?'disable':''}}"  data-index="{{index}}" bindtap="chooseItem">
                     <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
                     <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
                     <view class="mes">
                         <view class="title">特殊优惠：</view>
                         <view>{{ruleOptions[item.rule.calculation]}}{{item.rule.value}}岁劲享{{item.discount_money}}元减免优惠</view>
+                    </view>
+                    <view class="buy-btn">
+                        <view class="active-price"><text>￥</text>{{item.discount_money}}</view>
+                        <view>优惠</view>
+                    </view>
+                </view>
+                <view wx:if="{{item.rule_type == 'vip' && item.status}}" class="buy-item light flex align-center justify-between {{item.disable?'disable':''}}"  data-index="{{index}}" bindtap="chooseItem">
+                    <image wx:if="{{item.check}}" src="../../image/check.png" class="check-icon" />
+                    <image wx:if="{{!item.check}}" src="../../image/nocheck.png" class="check-icon" />
+                    <view class="mes">
+                        <view class="title">会员优惠：</view>
+                        <view>认证会员可享受对应优惠</view>
                     </view>
                     <view class="buy-btn">
                         <view class="active-price"><text>￥</text>{{item.discount_money}}</view>

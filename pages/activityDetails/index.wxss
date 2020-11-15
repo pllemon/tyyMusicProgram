@@ -39,6 +39,9 @@ page{
 .buy-item .active-price text{
   font-size: 26rpx;
 }
+.buy-item.disable{
+  opacity: 0.6;
+}
 
 
 /*  */

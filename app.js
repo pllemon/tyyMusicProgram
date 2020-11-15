@@ -26,7 +26,7 @@ App({
       })
     }
     wx.request({
-      url: 'https://music.eqask.com' + obj.url,
+      url: 'http://120.25.25.90:8082' + obj.url,
       method: obj.method || 'POST',
       header: {
         'content-type': 'application/json',

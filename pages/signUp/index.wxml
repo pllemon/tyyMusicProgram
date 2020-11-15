@@ -16,12 +16,15 @@
                 <common-picker isNumber="{{true}}" dict="SEX" value="{{form.sex}}" data-key="form.user_sex" bind:change="changePicker" />
             </view>
             <van-field size="large" required label="联系方式" type="number" data-key="form.phone" value="{{ form.phone }}" placeholder="请输入" bind:change="onChange" />
-            <van-field size="large" required label="出生年月日" data-key="form.birthday" value="{{ form.birthday }}" placeholder="请输入" bind:change="onChange" />
+            <view class="picker-cell require">
+                <text class="title">出生年月日</text>
+                <date-picker data-key="form.birthday" bind:change="changePicker" />
+            </view>
             <van-field size="large" required label="身份证号码" hidden="{{cardType == 2}}" type="idcard" data-key="form.peopleid" value="{{ form.peopleid }}" placeholder="请输入" bind:change="onChange">
-                <van-button slot="button" type="primary" size="mini" type="primary" bindtap="showOtherCard">其他证件</van-button>
+                <!-- <van-button slot="button" type="primary" size="mini" type="primary" bindtap="showOtherCard">其他证件</van-button> -->
             </van-field>
             <van-field size="large" required label="其他证件" hidden="{{cardType == 1}}" data-key="form.otherCard" value="{{ form.otherCard }}" placeholder="请输入" bind:change="onChange">
-                <van-button slot="button" type="primary" size="mini" type="primary" bindtap="showIdCard">身份证</van-button>
+                <!-- <van-button slot="button" type="primary" size="mini" type="primary" bindtap="showIdCard">身份证</van-button> -->
             </van-field>
             <van-field size="large" required label="监护人" data-key="form.guardian" value="{{ form.guardian }}" placeholder="请输入" bind:change="onChange" />
         </van-cell-group>
@@ -52,8 +55,8 @@
 
         <van-cell-group>
             <van-field size="large" label="分赛场" data-key="form.fensaichang" value="{{ form.fensaichang }}" placeholder="请输入" bind:change="onChange" /> 
-            <block wx:for="{{form.textList}}">
-                <van-field size="large" label="{{item.name}}" data-key="{{item.key}}" required="{{item.required}}" value="{{ item.value }}" placeholder="请输入" bind:change="onChange" />
+            <block wx:for="{{message.fields}}" wx:for-index="idx" wx:for-item="itemName">
+                <van-field size="large" label="{{itemName.title}}" data-key="form.signupInfo[{{index}}].{{itemName.fields}}" value="{{ item[itemName.fields] }}" placeholder="请输入" bind:change="onChange" />
             </block> 
         </van-cell-group>
     </scroll-view>

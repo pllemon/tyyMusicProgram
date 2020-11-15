@@ -21,6 +21,7 @@
   "usingComponents": {
     "gdImage": "/components/image/index",
     "common-picker": "/components/commonPicker/commonPicker",
+    "date-picker": "/components/datePicker/datePicker",
     
     "tab": "/components/tab/index",
     "login": "/components/login/index",

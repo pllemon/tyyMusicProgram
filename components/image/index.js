@@ -40,7 +40,7 @@ Component({
   methods: {
     preview() {
       if (this.properties.preview) {
-        let imgSrc = this.properties.needPad ? 'https://music.eqask.com/' + this.properties.src : this.properties.src
+        let imgSrc = this.properties.needPad ? 'http://120.25.25.90:8082/' + this.properties.src : this.properties.src
         wx.previewImage({
           current: imgSrc,
           urls: [imgSrc]
