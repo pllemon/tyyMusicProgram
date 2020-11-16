@@ -123,9 +123,18 @@ Page({
 
     signUp() {
         let that = this
+        let form = this.data.form
+        if (that.data.cardType == 2 && !form.otherid) {
+            app.showModal('请输入其他证件')
+            return false
+        }
+        if (that.data.cardType == 1 && !form.idcard) {
+            app.showModal('请输入身份证')
+            return false
+        }
         app.request({
             url: '/examinationsingup',
-            data: that.data.form,
+            data: form,
             success: function(data) {
                 wx.requestPayment({
                     'nonceStr': data.nonceStr,

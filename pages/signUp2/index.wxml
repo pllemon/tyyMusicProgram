@@ -11,12 +11,12 @@
                 <van-cell>
                     <text slot="title" class="text-black text-bold text-lg">报名人{{form.signupInfo.length>1?index+1:''}}</text>
                 </van-cell>
-                <van-field size="large" required label="报名人" data-key="form.signupInfo[{{index}}].signup_name" value="{{ item.signup_name }}" placeholder="请输入" bind:change="onChange" />
-                <van-field size="large" required label="联系方式" type="number" data-key="form.signupInfo[{{index}}].phone" value="{{ item.phone }}" placeholder="请输入" bind:change="onChange" />
-                <van-field size="large" required label="身份证号码" type="idcard" data-key="form.signupInfo[{{index}}].peopleid" value="{{ item.peopleid }}" placeholder="请输入" bind:change="onChange" />
-                <van-field size="large" label="机构" data-key="form.signupInfo[{{index}}].mechanism" value="{{ item.mechanism }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" cursor-spacing="{{200}}" required label="报名人" data-key="form.signupInfo[{{index}}].signup_name" value="{{ item.signup_name }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" cursor-spacing="{{200}}" required label="联系方式" type="number" data-key="form.signupInfo[{{index}}].phone" value="{{ item.phone }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" cursor-spacing="{{200}}" required label="身份证号码" type="idcard" data-key="form.signupInfo[{{index}}].peopleid" value="{{ item.peopleid }}" placeholder="请输入" bind:change="onChange" />
+                <van-field size="large" cursor-spacing="{{200}}" label="机构" data-key="form.signupInfo[{{index}}].mechanism" value="{{ item.mechanism }}" placeholder="请输入" bind:change="onChange" />
                 <block wx:for="{{message.fields}}" wx:for-index="idx" wx:for-item="itemName">
-                    <van-field size="large" label="{{itemName.title}}" data-key="form.signupInfo[{{index}}].{{itemName.fields}}" value="{{ item[itemName.fields] }}" placeholder="请输入" bind:change="onChange" />
+                    <van-field size="large" cursor-spacing="{{200}}" label="{{itemName.title}}" data-key="form.signupInfo[{{index}}].{{itemName.fields}}" value="{{ item[itemName.fields] }}" placeholder="请输入" bind:change="onChange" />
                 </block>
             </view>
         </van-cell-group>
